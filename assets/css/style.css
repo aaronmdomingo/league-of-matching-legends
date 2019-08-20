@@ -1,1 +1,123 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
 
+html {
+  font-size: 62.5%; /* 10px  */
+}
+
+body {
+  box-sizing: border-box;
+}
+
+.main {
+  height: 100vh;
+  width: 100vw;
+  margin: auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main__Container {
+  height: 95%;
+  width: 90%;
+  margin: auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main__Header_Container {
+  height: 10%;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main__Header {
+  height: 90%;
+  width: 90%;
+  font-size: 6rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main__Content {
+  height: 90%;
+  width: 100%;
+  display: flex;
+}
+
+.main__Aside_Container {
+  width: 20%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.main__Aside_Container > * {
+  height: 20%;
+  width: 90%;
+}
+
+.main__Aside-Stats   {
+  height: 10%;
+}
+
+.main__Game_Container {
+  width: 80%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.main__Card_Container {
+  height: 100%;
+  width: 90%;
+}
+
+.main__Card_Row {
+  height: 20%;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.main__Card {
+  width: 20%;
+  height: 90%;
+
+}
+
+.main__Card-back {
+  background-image: url("/assets/images/lfz-card.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.main__Card-front {
+  display: none;
+}
