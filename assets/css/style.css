@@ -6,6 +6,11 @@
   #fcfafa
   #64c4ed
   #4f81c7
+
+  #34FFFF
+  #304559
+
+  #fcd073
 */
 
 
@@ -26,14 +31,89 @@ body {
   box-sizing: border-box;
 }
 
+.win {
+  height: 50%;
+  width: 60%;
+  margin: auto;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.win__Container {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.win__Logo {
+  height: 60%;
+  width: 100%;
+  font-size: 4rem;
+  color: #fcd073;;
+  border: 1px solid #c7b184;
+  border-radius: 5px;
+
+  background-image: url("/assets/images/Victory.jpeg");
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.win__Buttons {
+  height: 40%;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.win__Buttons-back,
+.win__Buttons-play {
+  color: #c7b184;
+  font-size: 3rem;
+  height: 30%;
+  width: 30%;
+
+  border: 1px solid #c7b184;
+  border-radius: 5px;
+  background-color: rgba(48, 69, 89, 0.15);
+  transition: all 0.2s ease;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.win__Buttons-back:hover,
+.win__Buttons-play:hover {
+  background-color: rgba(52, 255, 255, 0.25);
+  box-shadow: 0px 0px 5px 3px #c7b184;
+  transform: scale(1.1);
+}
+
+.win__Buttons-back:active,
+.win__Buttons-play:active {
+  transform: scale(1);
+}
+
 .main {
   height: 100vh;
   width: 100vw;
   margin: auto;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),url("/assets/images/wallpaper.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),url("/assets/images/wallpaper.jpg");
   background-size: cover;
   background-position: center;
-  /* background-attachment: fixed; */
+  background-attachment: fixed;
 
   display: flex;
   justify-content: center;
@@ -60,16 +140,28 @@ body {
   align-items: center;
 }
 
+
 .main__Header {
   height: 90%;
   width: 90%;
   font-size: 6rem;
-  color: #c7b184;
+  color: #fcd073;
 
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 1px solid #c7b184;
+  border-radius: 5px;
+  background-color:rgba(48, 69, 89, 0.15);
+  transition: all 0.2s ease;
 }
+
+/* .main__Header:hover,
+.main__Aside-Stats:hover {
+  color: #fff;
+  text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #c7b184 0px 0px 20px, #c7b184 0px 0px 30px, #c7b184 0px 0px 40px, #c7b184 0px 0px 50px, #c7b184 0px 0px 75px;
+  opacity: 0.95;
+} */
 
 .main__Content {
   height: 90%;
@@ -82,18 +174,62 @@ body {
   height: 100%;
 
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
   align-items: center;
 }
 
-.main__Aside_Container > * {
+.main__Aside_Sub_Container {
+  height: 90%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+.main__Aside_Sub_Container > * {
   height: 20%;
   width: 90%;
 }
 
 .main__Aside-Stats   {
   height: 10%;
+  font-size: 4rem;
+  color: #fcd073;
+  border: 1px solid #c7b184;
+  border-radius: 5px;
+  background-color: rgba(48, 69, 89, 0.15);
+
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main__Aside-Games-Text,
+.main__Aside-Attempts-Text,
+.main__Aside-Accuracy-Text {
+  height: 50%;
+  font-size: 2.5rem;
+  color: #fcd073;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main__Aside-Games-Count,
+.main__Aside-Attempts-Count,
+.main__Aside-Accuracy-Count {
+  height: 50%;
+  font-size: 3rem;
+  color: rgba(52, 255, 255, 0.75);
+
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .main__Game_Container {
@@ -106,12 +242,12 @@ body {
 
 
 .main__Card_Container {
-  height: 100%;
+  height: 97.5%;
   width: 95%;
 }
 
 .main__Card_Row {
-  height: 33%;
+  height: 33.33%;
   width: 100%;
 
   display: flex;
@@ -150,7 +286,7 @@ body {
 
 .main__Card-back:hover {
   transform: scale(1.1);
-  box-shadow: 0px 0px 5px 3px #c7b184;
+  box-shadow: 0px 0px 5px 3px #fcd073;;
 }
 
 .main__Card-back:active {
@@ -175,8 +311,12 @@ body {
   opacity: 0;
 }
 
-.hidden {
-  display: none;
+.blur {
+  filter: blur(5px);
+}
+
+.zIndexUp {
+  z-index: 200;
 }
 
 .show {
@@ -188,6 +328,9 @@ body {
   transform: scale(0.75)
 }
 
+.indicatorFadeIn {
+  animation: fadeIn 2s linear;
+}
 
 /* CARD CLASSES */
 
@@ -225,4 +368,17 @@ body {
 
 .zed {
   background-image: url('/assets/images/Zed.png');
+}
+
+
+/* ANIMATIONS */
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
