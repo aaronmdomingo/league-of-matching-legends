@@ -1,3 +1,14 @@
+/*
+  Gold: #c7b184;
+  Blue: #b2d9db;
+
+  #f0d78c
+  #fcfafa
+  #64c4ed
+  #4f81c7
+*/
+
+
 *,
 *::after,
 *::before {
@@ -8,6 +19,7 @@
 
 html {
   font-size: 62.5%; /* 10px  */
+  font-family: 'Prociono', serif, sans-serif;
 }
 
 body {
@@ -18,6 +30,10 @@ body {
   height: 100vh;
   width: 100vw;
   margin: auto;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),url("/assets/images/wallpaper.jpg");
+  background-size: cover;
+  background-position: center;
+  /* background-attachment: fixed; */
 
   display: flex;
   justify-content: center;
@@ -26,7 +42,7 @@ body {
 
 .main__Container {
   height: 95%;
-  width: 90%;
+  width: 95%;
   margin: auto;
 
   display: flex;
@@ -48,6 +64,7 @@ body {
   height: 90%;
   width: 90%;
   font-size: 6rem;
+  color: #c7b184;
 
   display: flex;
   justify-content: center;
@@ -90,11 +107,11 @@ body {
 
 .main__Card_Container {
   height: 100%;
-  width: 90%;
+  width: 95%;
 }
 
 .main__Card_Row {
-  height: 20%;
+  height: 33%;
   width: 100%;
 
   display: flex;
@@ -103,21 +120,109 @@ body {
 }
 
 .main__Card {
-  width: 20%;
+  width: 15%;
   height: 90%;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+
 
 }
 
 .main__Card-back {
-  background-image: url("/assets/images/lfz-card.jpg");
+  background-image: url("/assets/images/card-back.png");
   background-size: cover;
   background-position: center;
   height: 100%;
-
   border-radius: 5px;
+  transition: all 0.2s ease;
+  border: none;
+  opacity: 1;
+  box-shadow: 0px 0px 1px 1px #c7b184;
+
   cursor: pointer;
+
+  grid-row: 1 / -1;
+  grid-column: 1 / -1;
+  z-index: 2;
 }
 
+.main__Card-back:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 0px 5px 3px #c7b184;
+}
+
+.main__Card-back:active {
+  transform: scale(1);
+}
+
+
 .main__Card-front {
+  height: 100%;
+  background-size: cover;
+  background-position: top center;
+  border-radius: 5px;
+
+  cursor: pointer;
+
+  grid-row: 1 / -1;
+  grid-column: 1 / -1;
+  z-index: 1;
+}
+
+.invisible {
+  opacity: 0;
+}
+
+.hidden {
   display: none;
+}
+
+.show {
+  opacity: 1;
+}
+
+.matching {
+  box-shadow: 0px 0px 8px 3px rgb(255, 255, 255);
+  transform: scale(0.75)
+}
+
+
+/* CARD CLASSES */
+
+.aatrox {
+  background-image: url('/assets/images/Aatrox.png');
+}
+
+.ahri {
+  background-image: url('/assets/images/Ahri.png');
+}
+
+.azir {
+  background-image: url('/assets/images/Azir.png');
+}
+
+.braum {
+  background-image: url('/assets/images/Braum.png');
+}
+
+.yasuo {
+  background-image: url('/assets/images/Yasuo.png');
+}
+
+.diana {
+  background-image: url('/assets/images/Diana.png');
+}
+
+.elise {
+  background-image: url('/assets/images/Elise.png');
+}
+
+.jinx {
+  background-image: url('/assets/images/Jinx.png');
+}
+
+.zed {
+  background-image: url('/assets/images/Zed.png');
 }
