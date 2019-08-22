@@ -25,9 +25,11 @@ var attempts = null;
 var games_played = 0;
 var percentage = 0;
 var streak = 0;
+var streakMatch = 0;
 
 var imgClasses = ['aatrox', 'ahri', 'azir', 'braum', 'yasuo', 'diana', 'elise', 'jinx', 'zed',
-                  'aatrox', 'ahri', 'azir', 'braum', 'yasuo', 'diana', 'elise', 'jinx', 'zed'];
+                  'zed', 'jinx', 'elise', 'diana', 'yasuo', 'braum', 'azir', 'ahri', 'aatrox'];
+
 var newArray = [];
 var maxMatches = imgClasses.length / 2;
 
@@ -63,10 +65,13 @@ function checkMatch (event) {
       secondCardFront = $(event.currentTarget).siblings().attr('class');
     }
 
+    console.log(firstCardClicked, secondCardClicked);
+
     if (firstCardFront === secondCardFront) {
       matches++
       attempts++
       streak++
+      streakMatch++
       championName = firstCardFront.split(' ')[1];
       switch (championName) {
         case 'aatrox':
@@ -100,52 +105,68 @@ function checkMatch (event) {
           console.log('That\'s not a champion!');
       }
 
-
       $(firstSibling).addClass('matching');
       $(secondSibling).addClass('matching');
 
       resetValues();
       displayStats();
-      $('.main__Game_Container').css('pointer-events', 'none');
+      disableClick('.main__Game_Container');
+      disableClick('.main__Card');
       setTimeout(function() {
-        $('.main__Game_Container').css('pointer-events', 'auto');
+        enableClick('.main__Game_Container');
+        enableClick('.main__Card');
       }, 500)
 
-      if (streak === matches) {
+      if (streak === streakMatch) {
         switch (streak) {
+          case 0:
+            break;
           case 2:
+            muteSound();
             playSoundMp3('DoubleKill');
             break;
           case 3:
+            muteSound();
             playSoundMp3('TripleKill');
             break;
           case 4:
+            muteSound();
             playSoundMp3('QuadraKill');
             break;
           case 5:
+            muteSound();
             playSoundMp3('PentaKill');
+            pentakill();
+            break;
+          case 6:
+            muteSound();
+            $('.win__Logo').text('Godlike!')
+            winGame();
             break;
           default:
-            console.log('Nice');
+            break;
         }
       }
 
-      if (matches === maxMatches) {
-        //GAME WON
+      if (streak !== 6  && matches === maxMatches) {
+        muteSound();
         winGame();
       }
-
 
     } else if (secondCardClicked !== null && firstCardFront !== secondCardFront) {
       attempts++
       streak = 0;
+      streakMatch = 0;
+
       displayStats();
-      $('.main__Game_Container').css('pointer-events', 'none');
+      disableClick('.main__Game_Container')
+      disableClick('.main__Card');
       setTimeout(function () {
         $(firstCardClicked).removeClass('invisible');
         $(secondCardClicked).removeClass('invisible');
         resetValues();
-        $('.main__Game_Container').css('pointer-events', 'auto');
+        enableClick('.main__Game_Container');
+        enableClick('.main__Card');
       }, 500);
     }
   }
@@ -180,7 +201,7 @@ function calculateAccuracy() {
 
 function playSoundMp3(name) {
   audio = new Audio(`/assets/sounds/${name}.mp3`);
-  audio.volume = 0.5;
+  audio.volume = 0.3;
   audio.play();
 }
 
@@ -188,6 +209,10 @@ function playSoundWav(name) {
   audio = new Audio(`/assets/sounds/${name}.wav`);
   audio.volume = 0.1;
   audio.play();
+}
+
+function muteSound() {
+  audio.volume = 0;
 }
 
 function resetValues() {
@@ -211,11 +236,13 @@ function displayStats() {
 
 function resetStats() {
   resetCards();
-  resetValues();
   shuffleCards();
   $(cardFront).removeClass('matching');
   $(cardBack).removeClass('invisible');
+  $('.win__Logo').text('Victory');
 
+  streak = 0;
+  streakMatch = 0;
   matches = 0;
   attempts = 0;
   resetValues();
@@ -223,21 +250,31 @@ function resetStats() {
 
   mainContainer.removeClass('blur');
   winContainer.removeClass('zIndexUp').removeClass('indicatorFadeIn').addClass('invisible');
-  $('.main__Game_Container').css('pointer-events', 'auto');
+  enableClick('.main__Game_Container');
+  disableClick('.win');
 }
 
 function goBack() {
   mainContainer.removeClass('blur');
   winContainer.removeClass('zIndexUp').removeClass('indicatorFadeIn').addClass('invisible');
-  $('.main__Game_Container').css('pointer-events', 'auto');
+  enableClick('.main__Game_Container');
+  disableClick('.win');
 }
 
 function winGame() {
   games_played++
   mainContainer.addClass('blur');
   winContainer.addClass('zIndexUp').removeClass('invisible').addClass('indicatorFadeIn');
-  $('.main__Game_Container').css('pointer-events', 'none');
-  playSoundMp3('Victory');
+  enableClick('.win');
+  disableClick('.main__Game_Container');
+
+  setTimeout(function() {
+    if ($('.win__Logo').text() === 'Godlike!') {
+      playSoundMp3('Godlike');
+    } else {
+      playSoundMp3('Victory');
+    }
+  }, 1000)
 
   button.mouseenter(function() {
     playSoundWav('Hover');
@@ -251,6 +288,28 @@ function winGame() {
   backButton.click(goBack);
 }
 
+function enableClick(name) {
+  $(name).css('pointer-events', 'auto');
+}
+
+function disableClick(name) {
+  $(name).css('pointer-events', 'none');
+}
+
+function addStyle(element, style) {
+  $(element).addClass(style);
+}
+
+function removeStyle(element, style) {
+  $(element).removeClass(style)
+}
+
 function pentakill() {
-  
+  $('.main__Card-front.matching').addClass('indicatorPentaKill').addClass('addGlow');
+  disableClick('.main__Card');
+
+  setTimeout(function() {
+    enableClick('.main__Card');
+    $('.main__Card-front.matching').removeClass('indicatorPentaKill').removeClass('addGlow');
+  }, 3000)
 }
