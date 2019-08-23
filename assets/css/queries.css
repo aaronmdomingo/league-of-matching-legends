@@ -1,0 +1,125 @@
+/* big tablets to 1200 pixels */
+@media only screen and (max-width: 1200px) {
+  html {
+    font-size: 56.25%;
+  }
+
+  .main__Container {
+    height: 100%;
+    width: 97.5%;
+  }
+
+  .main__Header {
+    height: 70%;
+    width: 80%;
+    font-size: 5rem;
+  }
+
+  .main__Content {
+    flex-direction: column;
+  }
+
+  .main__Aside_Container {
+    height: 10%;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+  }
+
+  .main__Aside_Sub_Container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 98.80%;
+  }
+
+  .main__Aside_Sub_Container > * {
+    height: 75%;
+    width: 25%;
+  }
+
+  .main__Game_Container {
+    height: 90%;
+    width: 100%;
+  }
+
+  .main__Card_Container {
+    height: 100%;
+    width: 100%;
+  }
+
+}
+
+/* Small tablets to big tablets from 768 - 1023 pixels */
+@media only screen and (max-width: 1023px) {
+  html {
+    font-size: 50%;
+  }
+
+  .main__Header {
+    height: 70%;
+    width: 70%;
+  }
+
+  .main__Aside_Sub_Container > * {
+    height: 65%;
+    width: 25%;
+  }
+
+}
+
+/* Phone smallers than an iPad 481 - 767 pixels */
+@media only screen and (max-width: 767px) {
+  html {
+    font-size: 43.75%;
+  }
+
+  .main__Container {
+    width: 99%;
+  }
+
+  .main__Header {
+    height: 70%;
+    width: 77.5%;
+  }
+
+}
+
+@media only screen and (max-width: 650px) {
+  html {
+    font-size: 37.5%;
+  }
+
+  .main__Aside_Sub_Container > * {
+    height: 55%;
+    width: 25%;
+  }
+
+  .win__Buttons-back,
+  .win__Buttons-play {
+    height: 25%;
+  }
+
+}
+
+/* Small Phones from 0-480 pixels */
+@media only screen and (max-width: 480px) {
+  html {
+    font-size: 31%
+  }
+
+  .main__Aside_Sub_Container > * {
+    height: 45%;
+    width: 25%;
+  }
+
+  .main__Card_Row {
+    flex-wrap: wrap;
+  }
+
+  .win__Buttons-back,
+  .win__Buttons-play {
+    height: 20%;
+  }
+}
