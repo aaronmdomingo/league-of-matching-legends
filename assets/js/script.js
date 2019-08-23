@@ -2,8 +2,12 @@ $(document).ready(initializeApp);
 
 var cardFront = $('.main__Card-front');
 var cardBack = $('.main__Card-back');
+var stats = $('.main__Aside-Stats');
+var gamesText = $('.main__Aside-Games-Text');
 var gamesCount = $('.main__Aside-Games-Count');
+var attemptsText = $('.main__Aside-Attempts-Text')
 var attemptsCount = $('.main__Aside-Attempts-Count');
+var accuracyText = $('.main__Aside-Accuracy-Text');
 var accuracyCount = $('.main__Aside-Accuracy-Count');
 var mainContainer = $('.main__Container');
 var winContainer = $('.win');
@@ -14,17 +18,20 @@ var playAgainButton = $('.win__Buttons-play');
 var firstCardClicked = null;
 var secondCardClicked = null;
 var matches = null;
+var globalMatches = null;
 var firstCardFront = null;
 var secondCardFront = null;
 var firstSibling = null;
 var secondSibling = null;
 var championName = null;
 var audio = null;
-var attempts = null;
+var attempts = 0;
+var globalAttempts = 0;
 var games_played = 0;
 var percentage = 0;
 var streak = 0;
 var streakMatch = 0;
+var streakArr = [];
 
 var imgClasses = ['aatrox', 'ahri', 'azir', 'braum', 'yasuo', 'diana', 'elise', 'jinx', 'zed',
                   'zed', 'jinx', 'elise', 'diana', 'yasuo', 'braum', 'azir', 'ahri', 'aatrox'];
@@ -41,11 +48,28 @@ function initializeApp() {
       playSoundWav('Hover');
     }
   })
+
   cardBack.click(function () {
     if (!($(this).hasClass('invisible'))) {
       playSoundWav('Click');
     }
   })
+
+  stats.mouseenter(function () {
+    playSoundWav('Hover');
+  })
+
+  stats.click(function() {
+    playSoundWav('Click');
+    if ($(stats).hasClass('clicked')) {
+      $(stats).removeClass('clicked');
+      displayStats();
+    } else {
+      $(stats).addClass('clicked');
+      displayGlobalStats();
+    }
+  })
+
   cardBack.click(checkMatch);
 }
 
@@ -68,9 +92,12 @@ function checkMatch (event) {
 
     if (firstCardFront === secondCardFront) {
       matches++
+      globalMatches++
       attempts++
+      globalAttempts++
       streak++
       streakMatch++
+
       championName = firstCardFront.split(' ')[1];
       switch (championName) {
         case 'aatrox':
@@ -145,6 +172,7 @@ function checkMatch (event) {
           default:
             break;
         }
+        streakArr.push(streak);
       }
 
       if (streak !== 6  && matches === maxMatches) {
@@ -154,6 +182,8 @@ function checkMatch (event) {
 
     } else if (secondCardClicked !== null && firstCardFront !== secondCardFront) {
       attempts++
+      globalAttempts++
+
       streak = 0;
       streakMatch = 0;
 
@@ -189,11 +219,11 @@ function shuffleCards() {
   }
 }
 
-function calculateAccuracy() {
-  if (attempts === 0 ) {
-    percentage = (matches / 1) * 100;
+function calculateAccuracy(attemptsVar, matchesVar) {
+  if (attemptsVar === 0 ) {
+    percentage = (matchesVar / 1) * 100;
   } else {
-    percentage = (matches / attempts) * 100;
+    percentage = (matchesVar / attemptsVar) * 100;
   }
   return percentage;
 }
@@ -226,11 +256,30 @@ function resetCards() {
 }
 
 function displayStats() {
-  var accuracy = calculateAccuracy();
-  accuracyRounded = Math.round(accuracy);
+  var accuracy = calculateAccuracy(attempts, matches);
+  var accuracyRounded = Math.round(accuracy);
+  $(gamesText).text('Games Played');
   $(gamesCount).text(games_played);
+  attemptsText.text('Attempts');
   $(attemptsCount).text(attempts);
+  accuracyText.text('Accuracy');
   $(accuracyCount).text(accuracyRounded + '%');
+}
+
+function displayGlobalStats() {
+  var totalAccuracy = calculateAccuracy(globalAttempts, globalMatches);
+  var totalAccuracyRounded = Math.round(totalAccuracy);
+  var longestStreak = Math.max(...streakArr);
+  $(gamesText).text('Longest Streak')
+  if (!streakArr.length) {
+    $(gamesCount).text(0);
+  } else {
+    $(gamesCount).text(longestStreak);
+  }
+  $(attemptsText).text('Total Attempts');
+  $(attemptsCount).text(globalAttempts);
+  $(accuracyText).text('Total Accuracy');
+  $(accuracyCount).text(totalAccuracyRounded + '%');
 }
 
 function resetStats() {

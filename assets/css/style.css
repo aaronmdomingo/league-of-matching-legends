@@ -140,7 +140,6 @@ body {
   transition: all 0.2s ease;
 }
 
-.main__Header:hover,
 .main__Aside-Stats:hover {
   color: #fff;
   text-shadow: #fcd073 0px 0px 0px, #fcd073 0px 0px 5px, #fcd073 0px 0px 10px, #fcd073 0px 0px 15px, #fcd073 0px 0px 25px, #fcd073 0px 0px 35px, #fcd073 0px 0px 45px, #fcd073 0px 0px 60px;
@@ -186,11 +185,21 @@ body {
   border: 1px solid #c7b184;
   border-radius: 5px;
   background-color: rgba(48, 69, 89, 0.15);
+  transition: all 0.2s ease;
+  cursor: pointer;
 
 
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.main__Aside-Stats:hover {
+  transform: scale(1.05);
+}
+
+.main__Aside-Stats:active {
+  transform: scale(1);
 }
 
 .main__Aside-Games-Text,
@@ -237,12 +246,21 @@ body {
   width: 100%;
 
   display: flex;
+}
+
+.main__Sub_Card_Row1,
+.main__Sub_Card_Row2 {
+  width: 50%;
+  height: 100%;
+
+  display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
+
 .main__Card {
-  width: 15%;
+  width: 27.5%;
   height: 90%;
 
   display: grid;

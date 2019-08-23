@@ -10,8 +10,8 @@
   }
 
   .main__Header {
-    height: 70%;
-    width: 80%;
+    height: 80%;
+    width: 90%;
     font-size: 5rem;
   }
 
@@ -31,7 +31,7 @@
     display: flex;
     flex-direction: row;
     height: 100%;
-    width: 98.80%;
+    width: 97.35%;
   }
 
   .main__Aside_Sub_Container > * {
@@ -58,8 +58,9 @@
   }
 
   .main__Header {
-    height: 70%;
-    width: 70%;
+    height: 80%;
+    width: 92.5%;
+    font-size: 6rem;
   }
 
   .main__Aside_Sub_Container > * {
@@ -80,8 +81,18 @@
   }
 
   .main__Header {
-    height: 70%;
-    width: 77.5%;
+    height: 80%;
+    width: 92.5%;
+  }
+
+  .main__Aside_Sub_Container {
+    height: 100%;
+    width: 98.85%;
+  }
+
+  .main__Card {
+  height: 90%;
+  width: 30%;
   }
 
 }
@@ -92,13 +103,18 @@
   }
 
   .main__Aside_Sub_Container > * {
-    height: 55%;
+    height: 70%;
     width: 25%;
   }
 
   .win__Buttons-back,
   .win__Buttons-play {
     height: 25%;
+  }
+
+  .main__Card {
+  height: 90%;
+  width: 30%;
   }
 
 }
@@ -109,17 +125,56 @@
     font-size: 31%
   }
 
+  .main__Header {
+    height: 80%;
+    width: 92.5%;
+    font-size: 5.5rem;
+  }
+
+  .main__Aside_Sub_Container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 92.5%;
+  }
+
   .main__Aside_Sub_Container > * {
-    height: 45%;
+    height: 70%;
     width: 25%;
   }
 
   .main__Card_Row {
-    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .main__Sub_Card_Row1,
+  .main__Sub_Card_Row2 {
+    height: 50%;
+    width: 100%;
+  }
+
+  .main__Card {
+    height: 90%;
+    width: 25%;
   }
 
   .win__Buttons-back,
   .win__Buttons-play {
     height: 20%;
+  }
+}
+
+/* Small Phones from 0-480 pixels */
+@media only screen and (max-width: 375px) {
+  html {
+    font-size: 25%
+  }
+
+  .main__Header {
+    font-size: 6.5rem;
   }
 }
