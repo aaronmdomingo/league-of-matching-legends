@@ -1,6 +1,5 @@
 $(document).ready(initializeApp);
 
-var card;
 var cardFront = $('.main__Card-front');
 var cardBack = $('.main__Card-back');
 var gamesCount = $('.main__Aside-Games-Count');
@@ -52,10 +51,12 @@ function initializeApp() {
 
 function checkMatch (event) {
   var card = this;
+  var cardNotFlipped = !($(card).hasClass('invisible'));
 
-  if (!($(card).hasClass('invisible'))) {
+
+  if (cardNotFlipped) {
     $(card).addClass('invisible');
-    if (firstCardClicked === null) {
+    if (!firstCardClicked) {
       firstCardClicked = $(event.currentTarget);
       firstSibling = $(event.currentTarget).siblings()[0];
       firstCardFront = $(event.currentTarget).siblings().attr('class');
@@ -64,8 +65,6 @@ function checkMatch (event) {
       secondSibling = $(event.currentTarget).siblings()[0];
       secondCardFront = $(event.currentTarget).siblings().attr('class');
     }
-
-    console.log(firstCardClicked, secondCardClicked);
 
     if (firstCardFront === secondCardFront) {
       matches++
