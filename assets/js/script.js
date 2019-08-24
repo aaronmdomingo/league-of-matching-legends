@@ -298,14 +298,14 @@ function resetStats() {
 
   mainContainer.removeClass('blur');
   winContainer.removeClass('zIndexUp').removeClass('indicatorFadeIn').addClass('invisible');
-  enableClick('.main__Game_Container');
+  enableClick('.main__Container');
   disableClick('.win');
 }
 
 function goBack() {
   mainContainer.removeClass('blur');
   winContainer.removeClass('zIndexUp').removeClass('indicatorFadeIn').addClass('invisible');
-  enableClick('.main__Game_Container');
+  enableClick('.main__Container');
   disableClick('.win');
 }
 
@@ -314,7 +314,7 @@ function winGame() {
   mainContainer.addClass('blur');
   winContainer.addClass('zIndexUp').removeClass('invisible').addClass('indicatorFadeIn');
   enableClick('.win');
-  disableClick('.main__Game_Container');
+  disableClick('.main__Container');
 
   setTimeout(function() {
     if ($('.win__Logo').text() === 'Godlike!') {
