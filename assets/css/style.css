@@ -15,6 +15,84 @@ body {
   box-sizing: border-box;
 }
 
+.main {
+  height: 100vh;
+  width: 100vw;
+  margin: auto;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),url("/assets/images/wallpaper.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.start {
+  height: 60%;
+  width: 40%;
+  margin: auto;
+  color: #fcd073;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  opacity: 0;
+  z-index: 10;
+  transition: all 1s;
+}
+
+.start__Container {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.start__Text {
+  height: 20%;
+  font-size: 5rem;
+
+  border: 1px solid #c7b184;
+  border-radius: 5px;
+  background-color:rgba(48, 69, 89, 0.15);
+  transition: all 0.2s ease;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.start__Rules {
+  height: 50%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.start__Rules-greetings {
+  font-size: 3rem;
+}
+
+.start__Rules-paragraph {
+  font-size: 2.25rem;
+}
+
+.start__Button_Container {
+  height: 20%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .win {
   height: 50%;
   width: 60%;
@@ -80,28 +158,15 @@ body {
 
 .win__Buttons-back:hover,
 .win__Buttons-play:hover {
-  background-color: rgba(52, 255, 255, 0.25);
-  box-shadow: 0px 0px 5px 3px #c7b184;
-  transform: scale(1.1);
+  color: #fff;
+  text-shadow: #fcd073 0px 0px 0px, #fcd073 0px 0px 5px, #fcd073 0px 0px 10px, #fcd073 0px 0px 15px, #fcd073 0px 0px 25px, #fcd073 0px 0px 35px, #fcd073 0px 0px 45px, #fcd073 0px 0px 60px;
+  box-shadow: 0px 0px 5px 3px #fcd073;
+  opacity: 0.95;
 }
 
 .win__Buttons-back:active,
 .win__Buttons-play:active {
   transform: scale(1);
-}
-
-.main {
-  height: 100vh;
-  width: 100vw;
-  margin: auto;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),url("/assets/images/wallpaper.jpg");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .main__Container {
@@ -113,6 +178,9 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  /* opacity: 0; */
+  opacity: 1;
 }
 
 .main__Header_Container {
@@ -138,14 +206,6 @@ body {
   border-radius: 5px;
   background-color:rgba(48, 69, 89, 0.15);
   transition: all 0.2s ease;
-}
-
-.main__Aside-Stats:hover {
-  color: #fff;
-  text-shadow: #fcd073 0px 0px 0px, #fcd073 0px 0px 5px, #fcd073 0px 0px 10px, #fcd073 0px 0px 15px, #fcd073 0px 0px 25px, #fcd073 0px 0px 35px, #fcd073 0px 0px 45px, #fcd073 0px 0px 60px;
-  box-shadow: 0px 0px 5px 3px #fcd073;;
-  /* text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #c7b184 0px 0px 20px, #c7b184 0px 0px 30px, #c7b184 0px 0px 40px, #c7b184 0px 0px 50px, #c7b184 0px 0px 75px; */
-  opacity: 0.95;
 }
 
 .main__Content {
@@ -175,10 +235,26 @@ body {
 
 .main__Aside_Sub_Container > * {
   height: 20%;
-  width: 90%;
+  width: 80%;
 }
 
-.main__Aside-Stats   {
+.main__Aside-Timer {
+  height: 10%;
+  font-size: 4rem;
+  color: rgba(52, 255, 255, 0.75);
+  border: 1px solid #c7b184;
+  border-radius: 5px;
+  background-color: rgba(48, 69, 89, 0.15);
+  transition: all 0.2s ease;
+
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main__Aside-Stats,
+.start__Button {
   height: 10%;
   font-size: 4rem;
   color: #fcd073;
@@ -194,11 +270,26 @@ body {
   align-items: center;
 }
 
-.main__Aside-Stats:hover {
-  transform: scale(1.05);
+.main__Aside-Stats:hover,
+.start__Button:hover {
+  color: #fff;
+  text-shadow: #fcd073 0px 0px 0px, #fcd073 0px 0px 5px, #fcd073 0px 0px 10px, #fcd073 0px 0px 15px, #fcd073 0px 0px 25px, #fcd073 0px 0px 35px, #fcd073 0px 0px 45px, #fcd073 0px 0px 60px;
+  box-shadow: 0px 0px 5px 3px #fcd073;
+  opacity: 0.95;
+  transform: scale(1.1);
 }
 
-.main__Aside-Stats:active {
+.start__Button {
+  width: 40%;
+  height: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main__Aside-Stats:active,
+.start__Button:active {
   transform: scale(1);
 }
 
@@ -317,12 +408,20 @@ body {
   opacity: 0;
 }
 
+.visible {
+  opacity: 1;
+}
+
 .blur {
   filter: blur(5px);
 }
 
 .zIndexUp {
   z-index: 200;
+}
+
+.zIndexDown {
+  z-index: 0;
 }
 
 .show {
@@ -344,6 +443,10 @@ body {
 
 .addGlow {
   box-shadow: 0px 0px 7px 5px #fcd073;
+}
+
+.transitionUp {
+  transition: all 1s;
 }
 
 
