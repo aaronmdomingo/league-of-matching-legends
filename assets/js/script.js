@@ -404,22 +404,6 @@ function pentakill() {
 
 //     if (countDown < 0) {
 //       clearInterval(timeCount);
-//       // disableKeys();
-//       // countDownTime.text('TIMES UP!');
-//       // $('.guess__Display-box').attr('disabled', 'true');
-//       // checkBtn.attr('disabled', 'true');
-//       // playSoundMp3('wrong');
-
-//       // statusResult.removeClass('indicatorScroll');
-//       // setTimeout(function () {
-//       //   statusResult.addClass('indicatorScroll');
-//       //   statusResult.text('You lost! Click reset to try again!');
-//       // }, 10)
-
-//       // main.addClass('gameOver');
-//       // setTimeout(function () {
-//       //   main.removeClass('gameOver');
-//       // }, 200)
 //     }
 //   }, 1000)
 // }
