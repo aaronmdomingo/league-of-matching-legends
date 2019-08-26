@@ -1,8 +1,9 @@
-$(document).ready(init);
+$(document).ready(initializeApp);
 
 var cardFront = $('.main__Card-front');
 var cardBack = $('.main__Card-back');
 var stats = $('.main__Aside-Stats');
+var timerText = $('.main__Aside-Timer');
 var gamesText = $('.main__Aside-Games-Text');
 var gamesCount = $('.main__Aside-Games-Count');
 var attemptsText = $('.main__Aside-Attempts-Text')
@@ -34,6 +35,7 @@ var percentage = 0;
 var streak = 0;
 var streakMatch = 0;
 var streakArr = [];
+var countDown;
 
 var imgClasses = ['aatrox', 'ahri', 'azir', 'braum', 'yasuo', 'diana', 'elise', 'jinx', 'zed',
                   'zed', 'jinx', 'elise', 'diana', 'yasuo', 'braum', 'azir', 'ahri', 'aatrox'];
@@ -41,51 +43,43 @@ var imgClasses = ['aatrox', 'ahri', 'azir', 'braum', 'yasuo', 'diana', 'elise', 
 var newArray = [];
 var maxMatches = imgClasses.length / 2;
 
-function init() {
-  startContainer.addClass('visible').addClass('zIndexUp');
-  winContainer.addClass('invisible');
-  mainContainer.addClass('invisible');
+// function init() {
+//   startContainer.addClass('visible').addClass('zIndexUp');
+//   winContainer.addClass('invisible');
+//   mainContainer.addClass('invisible');
 
-  startButton.mouseenter(function() {
-    playSoundWav('Hover');
-  })
-
-
-  startButton.click(function () {
-    playSoundWav('Click');
-    startContainer.removeClass('visible').removeClass('zIndexUp')
-                  .addClass('invisible').addClass('zIndexDown');
-    mainContainer.addClass('transitionUp');
-    initializeApp();
-  })
+//   startButton.mouseenter(function() {
+//     playSoundWav('Hover');
+//   })
 
 
-}
-
-
-
+//   startButton.click(function () {
+//     playSoundWav('Click');
+//     startContainer.removeClass('visible').removeClass('zIndexUp')
+//                   .addClass('invisible').addClass('zIndexDown');
+//     mainContainer.addClass('transitionUp');
+//     initializeApp();
+//   })
+// }
 
 function initializeApp() {
 
   shuffleCards();
   winContainer.addClass('invisible');
-  mainContainer.addClass('visible');
+  mainContainer.addClass('indicatorFadeIn');
   cardBack.mouseenter(function () {
     if (!($(this).hasClass('invisible'))) {
       playSoundWav('Hover');
     }
   })
-
   cardBack.click(function () {
     if (!($(this).hasClass('invisible'))) {
       playSoundWav('Click');
     }
   })
-
   stats.mouseenter(function () {
     playSoundWav('Hover');
   })
-
   stats.click(function() {
     playSoundWav('Click');
     if ($(stats).hasClass('clicked')) {
@@ -96,6 +90,9 @@ function initializeApp() {
       displayGlobalStats();
     }
   })
+
+  // timer(60);
+
 
   cardBack.click(checkMatch);
 }
@@ -124,7 +121,6 @@ function checkMatch (event) {
       globalAttempts++
       streak++
       streakMatch++
-
       championName = firstCardFront.split(' ')[1];
       switch (championName) {
         case 'aatrox':
@@ -174,21 +170,28 @@ function checkMatch (event) {
         switch (streak) {
           case 0:
             break;
+          case 1:
+            // countDown += 2;
+            break;
           case 2:
             muteSound();
             playSoundMp3('DoubleKill');
+            // countDown += 3;
             break;
           case 3:
             muteSound();
             playSoundMp3('TripleKill');
+            // countDown += 4;
             break;
           case 4:
             muteSound();
             playSoundMp3('QuadraKill');
+            // countDown += 5;
             break;
           case 5:
             muteSound();
             playSoundMp3('PentaKill');
+            // countDown += 6;
             pentakill();
             break;
           case 6:
@@ -337,6 +340,7 @@ function goBack() {
 }
 
 function winGame() {
+  // clearInterval(timeCount);
   games_played++
   mainContainer.addClass('blur').removeClass('transitionUp');
   winContainer.addClass('zIndexUp').removeClass('invisible').addClass('indicatorFadeIn');
@@ -388,3 +392,34 @@ function pentakill() {
     $('.main__Card-front.matching').removeClass('indicatorPentaKill').removeClass('addGlow');
   }, 3000)
 }
+
+// function timer(time) {
+//   countDown = time;
+
+//   timeCount = setInterval(function () {
+//     timerText.text(countDown);
+//     countDown -= 1
+//     if (countDown < 10) {
+//     }
+
+//     if (countDown < 0) {
+//       clearInterval(timeCount);
+//       // disableKeys();
+//       // countDownTime.text('TIMES UP!');
+//       // $('.guess__Display-box').attr('disabled', 'true');
+//       // checkBtn.attr('disabled', 'true');
+//       // playSoundMp3('wrong');
+
+//       // statusResult.removeClass('indicatorScroll');
+//       // setTimeout(function () {
+//       //   statusResult.addClass('indicatorScroll');
+//       //   statusResult.text('You lost! Click reset to try again!');
+//       // }, 10)
+
+//       // main.addClass('gameOver');
+//       // setTimeout(function () {
+//       //   main.removeClass('gameOver');
+//       // }, 200)
+//     }
+//   }, 1000)
+// }

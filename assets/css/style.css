@@ -179,7 +179,8 @@ body {
   justify-content: center;
   align-items: center;
 
-  opacity: 0;
+  /* opacity: 0; */
+  opacity: 1;
 }
 
 .main__Header_Container {
@@ -239,8 +240,8 @@ body {
 
 .main__Aside-Timer {
   height: 10%;
-  font-size: 5rem;
-  color: #fcd073;
+  font-size: 4rem;
+  color: rgba(52, 255, 255, 0.75);
   border: 1px solid #c7b184;
   border-radius: 5px;
   background-color: rgba(48, 69, 89, 0.15);
