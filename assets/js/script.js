@@ -1,4 +1,4 @@
-$(document).ready(initializeApp);
+$(document).ready(init);
 
 var cardFront = $('.main__Card-front');
 var cardBack = $('.main__Card-back');
@@ -11,9 +11,11 @@ var accuracyText = $('.main__Aside-Accuracy-Text');
 var accuracyCount = $('.main__Aside-Accuracy-Count');
 var mainContainer = $('.main__Container');
 var winContainer = $('.win');
+var startContainer = $('.start')
 var button = $('.btn');
 var backButton = $('.win__Buttons-back');
 var playAgainButton = $('.win__Buttons-play');
+var startButton = $('.start__Button');
 
 var firstCardClicked = null;
 var secondCardClicked = null;
@@ -39,10 +41,35 @@ var imgClasses = ['aatrox', 'ahri', 'azir', 'braum', 'yasuo', 'diana', 'elise', 
 var newArray = [];
 var maxMatches = imgClasses.length / 2;
 
+function init() {
+  startContainer.addClass('visible').addClass('zIndexUp');
+  winContainer.addClass('invisible');
+  mainContainer.addClass('invisible');
+
+  startButton.mouseenter(function() {
+    playSoundWav('Hover');
+  })
+
+
+  startButton.click(function () {
+    playSoundWav('Click');
+    startContainer.removeClass('visible').removeClass('zIndexUp')
+                  .addClass('invisible').addClass('zIndexDown');
+    mainContainer.addClass('transitionUp');
+    initializeApp();
+  })
+
+
+}
+
+
+
+
 function initializeApp() {
 
   shuffleCards();
   winContainer.addClass('invisible');
+  mainContainer.addClass('visible');
   cardBack.mouseenter(function () {
     if (!($(this).hasClass('invisible'))) {
       playSoundWav('Hover');
@@ -311,7 +338,7 @@ function goBack() {
 
 function winGame() {
   games_played++
-  mainContainer.addClass('blur');
+  mainContainer.addClass('blur').removeClass('transitionUp');
   winContainer.addClass('zIndexUp').removeClass('invisible').addClass('indicatorFadeIn');
   enableClick('.win');
   disableClick('.main__Container');
