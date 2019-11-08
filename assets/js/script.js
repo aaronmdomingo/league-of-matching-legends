@@ -1,4 +1,8 @@
-$(document).ready(initializeApp);
+$(document).ready(function() {
+  $(".loader").fadeOut('slow');
+  $(".loader__Container").fadeOut('slow');
+  initializeApp();
+});
 
 var cardFront = $('.main__Card-front');
 var cardBack = $('.main__Card-back');
