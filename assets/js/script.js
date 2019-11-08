@@ -245,6 +245,9 @@ function loadSound() {
 function playSound(name) {
   audio = createjs.Sound.play(name);
   audio.volume = 0.3;
+  if (name === 'Hover' && window.matchMedia('(max-width: 450px)').matches) {
+    audio.volume = 0;
+  }
 }
 
 function muteSound() {
