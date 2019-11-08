@@ -23,7 +23,6 @@ body {
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-
   position: relative;
   display: flex;
   justify-content: center;
@@ -35,12 +34,10 @@ body {
   width: 40%;
   margin: auto;
   color: #fcd073;
-
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
   opacity: 0;
   z-index: 10;
   transition: all 1s;
@@ -49,7 +46,6 @@ body {
 .start__Container {
   height: 100%;
   width: 100%;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -58,12 +54,10 @@ body {
 .start__Text {
   height: 20%;
   font-size: 5rem;
-
   border: 1px solid #c7b184;
   border-radius: 5px;
   background-color:rgba(48, 69, 89, 0.15);
   transition: all 0.2s ease;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -71,7 +65,6 @@ body {
 
 .start__Rules {
   height: 50%;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -87,7 +80,6 @@ body {
 
 .start__Button_Container {
   height: 20%;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -97,7 +89,6 @@ body {
   height: 50%;
   width: 60%;
   margin: auto;
-
   position: absolute;
   top: 50%;
   left: 50%;
@@ -107,7 +98,6 @@ body {
 .win__Container {
   height: 100%;
   width: 100%;
-
   display: flex;
   flex-direction: column;
 }
@@ -119,11 +109,9 @@ body {
   color: #fcd073;;
   border: 1px solid #c7b184;
   border-radius: 5px;
-
   background-image: url("/assets/images/Victory.jpeg");
   background-size: cover;
   background-position: center;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -132,7 +120,6 @@ body {
 .win__Buttons {
   height: 40%;
   width: 100%;
-
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -144,13 +131,11 @@ body {
   font-size: 3rem;
   height: 30%;
   width: 30%;
-
   border: 1px solid #c7b184;
   border-radius: 5px;
   background-color: rgba(48, 69, 89, 0.15);
   transition: all 0.2s ease;
   cursor: pointer;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -173,13 +158,10 @@ body {
   height: 95%;
   width: 95%;
   margin: auto;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  /* opacity: 0; */
   opacity: 1;
 }
 
