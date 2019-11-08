@@ -125,6 +125,18 @@
     font-size: 31%
   }
 
+  .main__Card-back:hover,
+  .main__Aside-Stats:hover {
+    transform: none;
+    text-shadow: none;
+    box-shadow: 0px 0px 1px 1px #c7b184;
+  }
+
+  .main__Aside-Stats:active {
+    transform: none;
+
+  }
+
   .main__Header {
     height: 80%;
     width: 92.5%;
