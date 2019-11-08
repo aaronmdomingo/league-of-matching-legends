@@ -134,7 +134,7 @@ function checkMatch (event) {
           playSoundMp3('Zed');
           break;
         default:
-          console.log('That\'s not a champion!');
+          alert('That\'s not a champion!');
       }
 
       $(firstSibling).addClass('matching');
@@ -350,14 +350,6 @@ function enableClick(name) {
 
 function disableClick(name) {
   $(name).css('pointer-events', 'none');
-}
-
-function addStyle(element, style) {
-  $(element).addClass(style);
-}
-
-function removeStyle(element, style) {
-  $(element).removeClass(style)
 }
 
 function pentakill() {
