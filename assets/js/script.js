@@ -20,7 +20,6 @@ var startContainer = $('.start')
 var button = $('.btn');
 var backButton = $('.win__Buttons-back');
 var playAgainButton = $('.win__Buttons-play');
-var startButton = $('.start__Button');
 
 var firstCardClicked = null;
 var secondCardClicked = null;
@@ -54,19 +53,19 @@ function initializeApp() {
   mainContainer.addClass('indicatorFadeIn');
   cardBack.mouseenter(function () {
     if (!($(this).hasClass('invisible'))) {
-      playSoundWav('Hover');
+      playSound('Hover');
     }
   })
   cardBack.click(function () {
     if (!($(this).hasClass('invisible'))) {
-      playSoundWav('Click');
+      playSound('Click');
     }
   })
   stats.mouseenter(function () {
-    playSoundWav('Hover');
+    playSound('Hover');
   })
   stats.click(function() {
-    playSoundWav('Click');
+    playSound('Click');
     if ($(stats).hasClass('clicked')) {
       $(stats).removeClass('clicked');
       displayStats();
@@ -107,31 +106,31 @@ function checkMatch (event) {
       championName = firstCardFront.split(' ')[1];
       switch (championName) {
         case 'aatrox':
-          playSoundMp3('Aatrox');
+          playSound('Aatrox');
           break;
         case 'ahri':
-          playSoundMp3('Ahri');
+          playSound('Ahri');
           break;
         case 'azir':
-          playSoundMp3('Azir');
+          playSound('Azir');
           break;
         case 'braum':
-          playSoundMp3('Braum');
+          playSound('Braum');
           break;
         case 'yasuo':
-          playSoundMp3('Yasuo');
+          playSound('Yasuo');
           break;
         case 'diana':
-          playSoundMp3('Diana');
+          playSound('Diana');
           break;
         case 'elise':
-          playSoundMp3('Elise');
+          playSound('Elise');
           break;
         case 'jinx':
-          playSoundMp3('Jinx');
+          playSound('Jinx');
           break;
         case 'zed':
-          playSoundMp3('Zed');
+          playSound('Zed');
           break;
         default:
           alert('That\'s not a champion!');
@@ -157,19 +156,19 @@ function checkMatch (event) {
             break;
           case 2:
             muteSound();
-            playSoundMp3('DoubleKill');
+            playSound('DoubleKill');
             break;
           case 3:
             muteSound();
-            playSoundMp3('TripleKill');
+            playSound('TripleKill');
             break;
           case 4:
             muteSound();
-            playSoundMp3('QuadraKill');
+            playSound('QuadraKill');
             break;
           case 5:
             muteSound();
-            playSoundMp3('PentaKill');
+            playSound('PentaKill');
             pentakill();
             break;
           case 6:
@@ -236,16 +235,16 @@ function calculateAccuracy(attemptsVar, matchesVar) {
   return percentage;
 }
 
-function playSoundMp3(name) {
-  audio = new Audio(`/assets/sounds/${name}.mp3`);
-  audio.volume = 0.3;
-  audio.play();
+function loadSound() {
+  var mp3Array = ['Aatrox', 'Ahri', 'Azir', 'Braum', 'Diana', 'Elise', 'Jinx', 'Yasuo', 'Zed', 'DoubleKill', 'TripleKill', 'QuadraKill', 'PentaKill', 'Godlike', 'Victory', 'Click', 'Hover'];
+  for (var i = 0 ; i < mp3Array.length; i++) {
+    createjs.Sound.registerSound(`/assets/sounds/${mp3Array[i]}.mp3`, mp3Array[i]);
+  }
 }
 
-function playSoundWav(name) {
-  audio = new Audio(`/assets/sounds/${name}.wav`);
-  audio.volume = 0.1;
-  audio.play();
+function playSound(name) {
+  audio = createjs.Sound.play(name);
+  audio.volume = 0.3;
 }
 
 function muteSound() {
@@ -326,18 +325,18 @@ function winGame() {
 
   setTimeout(function() {
     if ($('.win__Logo').text() === 'Godlike!') {
-      playSoundMp3('Godlike');
+      playSound('Godlike');
     } else {
-      playSoundMp3('Victory');
+      playSound('Victory');
     }
   }, 1000)
 
   button.mouseenter(function() {
-    playSoundWav('Hover');
+    playSound('Hover');
   })
 
   button.click(function() {
-    playSoundWav('Click');
+    playSound('Click');
   })
 
   playAgainButton.click(resetStats);
