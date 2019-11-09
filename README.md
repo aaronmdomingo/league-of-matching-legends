@@ -6,7 +6,8 @@ A simple memory match game inspired by the video game League of Legends
 
 1. HTML5
 2. CSS3
-3. jQuery
+3. JavaScript
+4. jQuery
 
 ### Live Demo
 
