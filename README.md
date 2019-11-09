@@ -8,7 +8,7 @@ A simple memory match game inspired by the video game League of Legends
 2. CSS3
 3. jQuery
 
-### Technologies Used
+### Live Demo
 
 Try the application live at https://memorymatch.aarondomingo.com
 
